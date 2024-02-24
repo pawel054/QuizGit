@@ -11,7 +11,7 @@ namespace App1
 {
     public partial class MainPage : ContentPage
     {
-        private int currentQuestionIndex = 0;
+        private int currentQuestionIndex = 1;
         private int currentScore = 0;
         private List<int> questions = new List<int>();
         private Stopwatch stopwatch = new Stopwatch();
@@ -70,6 +70,11 @@ namespace App1
             {
                 FinishQuiz();
             }
+        }
+
+        private async void SubmitAnswer(object sender, EventArgs)
+        {
+            
         }
     }
 }
