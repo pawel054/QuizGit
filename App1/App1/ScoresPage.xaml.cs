@@ -15,6 +15,23 @@ namespace App1
         public ScoresPage()
         {
             InitializeComponent();
+            LoadScores();
+        }
+
+        private async void LoadScores()
+        {
+            var scores = await.Database.GetResultsAsync();
+
+            var sortedScores = scores.OrderByDescending(score => scores.Score).ThenBy(score => score.TotalTime).ToList();
+
+            var groupedScores = sortedScores.GroupBy(score => scores.Score).SelectMany(group => group.OrderBy(score => scores.TotalTime)).ToList();
+
+            for(int i=0; i < groupedScores.Count; i++)
+            {
+                groupedScores[i].RankingPosition = i + 1;
+            }
+
+            scoresCollectionView.ItemsSource = groupedScores;
         }
     }
 }
