@@ -46,5 +46,30 @@ namespace App1
                 ShowNextQuestion();
             }
         }
+
+        private void PlayAgainButon(object sender, EventArgs e)
+        {
+            finishGameView.IsVisible = false;
+            startGameView.IsVisible = false;
+            GenerateQuestions();
+        }
+
+        private void ShowNextQuestion()
+        {
+            submitAnswerButton.IsEnabled = true;
+            if(currentQuestionIndex < questions.Count)
+            {
+                questionLabel.IsVisible = true;
+                questionLabel.Text = $"Podwojona wartość {questions{currentQuestionIndex}} to :";
+                answerEnntry.IsVisible = true;
+                submitAnswerButton.IsVisible = false;
+                feedbackFrame.IsVisible = false;
+                stopwatch.Restart();
+            }
+            else
+            {
+                FinishQuiz();
+            }
+        }
     }
 }
