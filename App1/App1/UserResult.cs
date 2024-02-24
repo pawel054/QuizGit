@@ -19,7 +19,7 @@ namespace App1
 
         public int RankingPosition { get; set; }
 
-        public UserResult(string userName, double totalTime, int score, int rankingPosition)
+        public UserResult(string userName, double totalTime, int score)
         {
             UserName = userName;
             TotalTime = totalTime;

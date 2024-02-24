@@ -21,7 +21,7 @@ namespace App1
         {
             InitializeComponent();
 
-
+            GenerateQuestions();
         }
 
         private void FinishQuiz()
@@ -31,7 +31,7 @@ namespace App1
             DisplayFinalResults(totalTime);
         }
 
-        private async void ViewScoresClicked()
+        private async void ViewScoresClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScoresPage());
         }
@@ -57,51 +57,7 @@ namespace App1
         private void GenerateQuestions()
         {
             Random random = new Random();
-            questions = Enumerable.Range(0,5).Select(_=> random.Next(1,1001)).ToList();
+            questions = Enumerable.Range(0, 5).Select(_ => random.Next(1, 1001)).ToList();
         }
-
-        private void StartQuiz(object sender, EventArgs e)
-        {
-            if(string.IsNullOrEmpty(userNameEntry.Text))
-            {
-                DisplayAlert("Alert", "pole nie może być puste!", "OK");
-            }
-            else
-            {
-                currentScore = 0;
-                currentQuestionIndex = 0;
-                times.Clear();
-                startGameView.IsVisible = false;
-                finishGameView.IsVisible = false;
-                gameView.IsVisible = true;
-                ShowNextQuestion();
-            }
-        }
-
-        private void PlayAgainButon(object sender, EventArgs e)
-        {
-            finishGameView.IsVisible = false;
-            startGameView.IsVisible = false;
-            GenerateQuestions();
-        }
-
-        private void ShowNextQuestion()
-        {
-            submitAnswerButton.IsEnabled = true;
-            if(currentQuestionIndex < questions.Count)
-            {
-                questionLabel.IsVisible = true;
-                questionLabel.Text = $"Podwojona wartość {questions{currentQuestionIndex}} to :"; 
-                answerEnntry.IsVisible = true;
-                submitAnswerButton.IsVisible = false;
-                feedbackFrame.IsVisible = false;
-                stopwatch.Restart();
-            }
-            else
-            {
-                FinishQuiz();
-            }
-        }
-
     }
 }

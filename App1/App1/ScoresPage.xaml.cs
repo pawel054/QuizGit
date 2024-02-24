@@ -20,11 +20,11 @@ namespace App1
 
         private async void LoadScores()
         {
-            var scores = await.Database.GetResultsAsync();
+            var scores = await App.Database.GetResultsAsync();
 
-            var sortedScores = scores.OrderByDescending(score => scores.Score).ThenBy(score => score.TotalTime).ToList();
+            var sortedScores = scores.OrderByDescending(score => score.Score).ThenBy(score => score.TotalTime).ToList();
 
-            var groupedScores = sortedScores.GroupBy(score => scores.Score).SelectMany(group => group.OrderBy(score => scores.TotalTime)).ToList();
+            var groupedScores = sortedScores.GroupBy(score => score.Score).SelectMany(group => group.OrderBy(score => score.TotalTime)).ToList();
 
             for(int i=0; i < groupedScores.Count; i++)
             {
