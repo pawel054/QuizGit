@@ -72,7 +72,7 @@ namespace App1
             }
         }
 
-        private async void SubmitAnswer(object sender, EventArgs)
+        private async void SubmitAnswer(object sender, EventArgs e)
         {
             submitAnswerButton.isEnabled = false;
             stopwatch.Stop();
