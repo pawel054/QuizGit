@@ -60,7 +60,7 @@ namespace App1
             if(currentQuestionIndex < questions.Count)
             {
                 questionLabel.IsVisible = true;
-                questionLabel.Text = $"Podwojona wartość {questions{currentQuestionIndex}} to :";
+                questionLabel.Text = $"Podwojona wartość {questions{currentQuestionIndex}} to :"; 
                 answerEnntry.IsVisible = true;
                 submitAnswerButton.IsVisible = false;
                 feedbackFrame.IsVisible = false;
